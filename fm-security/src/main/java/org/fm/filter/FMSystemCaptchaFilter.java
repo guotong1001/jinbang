@@ -1,6 +1,5 @@
 package org.fm.filter;
 
-import org.fm.exception.FMVerCodeException;
 import org.fm.handler.FMAuthExceptionHandler;
 import org.fm.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,16 +53,16 @@ public class FMSystemCaptchaFilter extends OncePerRequestFilter {
      */
     private void checkCaptcha( HttpServletRequest request) throws AuthenticationException {
 
-        String verCode = request.getParameter("verCode");
-        String verKey = request.getParameter("verKey");
-        if(verCode == null || verKey == null)
-            throw new FMVerCodeException("验证码的值不能为空");
-
-        String captchaCode = (String) redisUtil.getValueByKey(verKey);
-
-        if(!verCode.trim().equalsIgnoreCase(captchaCode))
-            throw new FMVerCodeException("验证码不匹配");
-
-        redisUtil.deleteCache(verKey);
+//        String verCode = request.getParameter("verCode");
+//        String verKey = request.getParameter("verKey");
+//        if(verCode == null || verKey == null)
+//            throw new FMVerCodeException("验证码的值不能为空");
+//
+//        String captchaCode = (String) redisUtil.getValueByKey(verKey);
+//
+//        if(!verCode.trim().equalsIgnoreCase(captchaCode))
+//            throw new FMVerCodeException("验证码不匹配");
+//
+//        redisUtil.deleteCache(verKey);
     }
 }
