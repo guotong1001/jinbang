@@ -10,10 +10,9 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:org/fm/fm/mapper/*.xml
   configuration:
-    cacheEnabled: false
+    cacheEnabled: true #开启全局二级缓存
     logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
-    #map下划线转驼峰
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: true #map下划线转驼峰
     object-wrapper-factory: com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory
   global-config:
     banner: false

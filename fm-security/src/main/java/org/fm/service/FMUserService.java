@@ -1,15 +1,16 @@
 package org.fm.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.fm.bean.*;
+import org.fm.bean.ResponseBean;
+import org.fm.bean.ResponseEnum;
 import org.fm.config.ServerConfig;
 import org.fm.consts.HintConsts;
 import org.fm.consts.StateCodeConsts;
 import org.fm.fm.bo.SysUserInfoBO;
+import org.fm.fm.service.SysUserInfoService;
 import org.fm.fm.vo.SysUserInfoVO;
 import org.fm.fm.vo.Token;
 import org.fm.fm.vo.TokenVO;
-import org.fm.fm.service.SysUserInfoService;
 import org.fm.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

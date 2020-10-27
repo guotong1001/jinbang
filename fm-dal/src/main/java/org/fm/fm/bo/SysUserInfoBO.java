@@ -22,6 +22,7 @@ import java.util.Set;
 @TableName("sys_user_info")
 public class SysUserInfoBO extends SysUserInfo {
 
+    private static final long serialVersionUID = -276962274548453684L;
     @TableField(exist = false)
     private Set<SysRoleBO> sysRoleBOS = new HashSet<>();
 

@@ -2,9 +2,11 @@ package org.fm.fm.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.fm.fm.bo.SysUserInfoBO;
+import org.fm.util.RedisCache;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ import java.util.Map;
  * @since 2020-09-16 11:08:28
  */
 @Mapper
+@CacheNamespace(implementation= RedisCache.class,eviction= RedisCache.class)
 public interface SysUserInfoDao extends BaseMapper<SysUserInfoBO> {
 
     SysUserInfoBO findByUsername(String username);

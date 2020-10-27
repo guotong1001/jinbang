@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fm.fm.dao.SysUserInfoDao">
 
+    <cache-ref namespace="org.fm.fm.dao.SysUserInfoDao"/>
+
     <sql id="Base_Column_List">
         id, dept_id, username, password, fullname, phone, enabled, create_time, is_delete, remark
     </sql>
