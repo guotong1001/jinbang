@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: fm-server-api
+  profiles:
+    active: test
+    #    active: @profiles.active@
+    ####################################################################
+#mybatis:
+#  mapper-locations: classpath*:org/fm/fm/mapper/*.xml
+mybatis-plus:
+  mapper-locations: classpath*:org/fm/fm/mapper/*.xml
+  configuration:
+    cacheEnabled: false
+    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #map下划线转驼峰
+    map-underscore-to-camel-case: true
+    object-wrapper-factory: com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory
+  global-config:
+    banner: false
+    db-config:
+      logic-delete-value: 1 #逻辑删除后的状态 默认值1
+      logic-not-delete-value: 0 #逻辑删除前的值 默认值0
+############################

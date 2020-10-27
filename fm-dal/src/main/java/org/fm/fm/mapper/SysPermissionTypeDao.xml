@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.SysPermissionTypeDao">
+
+
+    <sql id="Base_Column_List">
+        id, type_code, type_intro, is_delete, create_time, remark        
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="typeCode != null and typeCode != ''">
+                and type_code = #{typeCode}
+            </if>
+            <if test="typeIntro != null and typeIntro != ''">
+                and type_intro = #{typeIntro}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.typeCode != null and map.typeCode != ''">
+                and type_code = #{map.typeCode}
+            </if>
+            <if test="map.typeIntro != null and map.typeIntro != ''">
+                and type_intro = #{map.typeIntro}
+            </if>
+            <if test="map.isDelete != null">
+                and is_delete = #{map.isDelete}
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.remark != null and map.remark != ''">
+                and remark = #{map.remark}
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.SysPermissionTypeBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_permission_type
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.SysPermissionTypeBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_permission_type
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>

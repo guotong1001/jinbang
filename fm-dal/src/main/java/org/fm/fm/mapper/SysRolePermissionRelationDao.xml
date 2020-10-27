@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.SysRolePermissionRelationDao">
+
+    <sql id="Base_Column_List">
+        role_id, permission_id
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+            <if test="permissionId != null">
+                and permission_id = #{permissionId}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.roleId != null">
+                and role_id = #{map.roleId}
+            </if>
+            <if test="map.permissionId != null">
+                and permission_id = #{map.permissionId}
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.SysRolePermissionRelationBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role_permission_relation
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.SysRolePermissionRelationBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role_permission_relation
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>

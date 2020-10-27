@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.SysUserInfoDao">
+
+    <sql id="Base_Column_List">
+        id, dept_id, username, password, fullname, phone, enabled, create_time, is_delete, remark
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="deptId != null">
+                and dept_id = #{deptId}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="fullname != null and fullname != ''">
+                and fullname = #{fullname}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="enabled != null and enabled != ''">
+                and enabled = #{enabled}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.deptId != null">
+                and dept_id = #{map.deptId}
+            </if>
+            <if test="map.username != null and map.username != ''">
+                and username like '%${map.username}%'
+            </if>
+            <if test="map.password != null and map.password != ''">
+                and password = #{map.password}
+            </if>
+            <if test="map.fullname != null and map.fullname != ''">
+                and fullname = #{map.fullname}
+            </if>
+            <if test="map.phone != null and map.phone != ''">
+                and phone = #{map.phone}
+            </if>
+            <if test="map.enabled != null and map.enabled != ''">
+                and enabled = #{map.enabled}
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.isDelete != null">
+                and is_delete = #{map.isDelete}
+            </if>
+            <if test="map.remark != null and map.remark != ''">
+                and remark = #{map.remark}
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.SysUserInfoBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user_info
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.SysUserInfoBO">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user_info
+        <include refid="whereForMap"/>
+    </select>
+
+    <select id="findByUsername" resultType="org.fm.fm.bo.SysUserInfoBO">
+        select *
+        from sys_user_info
+        where username = #{username} and is_delete = 0
+    </select>
+
+</mapper>
