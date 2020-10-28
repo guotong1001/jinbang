@@ -17,26 +17,26 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class SysUserRoleRelation extends Model<SysUserRoleRelation> {
     //用户
-    private Integer userId;
+    private Long userId;
     //角色
-    private Integer roleId;
+    private Long roleId;
 
     public SysUserRoleRelation() {
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 

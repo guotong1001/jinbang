@@ -64,7 +64,7 @@ public class PermitService {
                 SysPermissionBO sysPermission = new SysPermissionBO(permissionCode, permissionType, permissionInfo, new Date());
                 sysPermissionService.save(sysPermission);
                 SysPermissionBO spb = sysPermissionService.findByPermissionCodeAndPermissionType(permissionCode, permissionType);
-                sysRolePermissionRelationService.save(new SysRolePermissionRelationBO(SysConsts.SUPER_ADMIN, spb.getId()));
+                sysRolePermissionRelationService.save(new SysRolePermissionRelationBO(SysConsts.SUPER_ADMIN.longValue(), spb.getId()));
                 return true;
             }catch (Exception e){
                 e.printStackTrace();

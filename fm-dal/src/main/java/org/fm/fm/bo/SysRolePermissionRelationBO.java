@@ -16,10 +16,12 @@ import org.fm.fm.entity.SysRolePermissionRelation;
 @TableName("sys_role_permission_relation")
 public class SysRolePermissionRelationBO extends SysRolePermissionRelation {
 
+    private static final long serialVersionUID = 8480051417525159133L;
+
     public SysRolePermissionRelationBO() {
     }
 
-    public SysRolePermissionRelationBO(Integer roleId, Integer permissionId) {
+    public SysRolePermissionRelationBO(Long roleId, Long permissionId) {
         super(roleId, permissionId);
     }
 }

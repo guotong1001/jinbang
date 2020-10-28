@@ -5,16 +5,13 @@
     <cache-ref namespace="org.fm.fm.dao.SysUserInfoDao"/>
 
     <sql id="Base_Column_List">
-        id, dept_id, username, password, fullname, phone, enabled, create_time, is_delete, remark
+        id, username, password, fullname, phone, enabled, create_time, is_delete, remark
     </sql>
 
     <sql id="where">
         <where>
             <if test="id != null">
                 and id = #{id}
-            </if>
-            <if test="deptId != null">
-                and dept_id = #{deptId}
             </if>
             <if test="username != null and username != ''">
                 and username = #{username}
@@ -47,9 +44,6 @@
         <where>
             <if test="map.id != null">
                 and id = #{map.id}
-            </if>
-            <if test="map.deptId != null">
-                and dept_id = #{map.deptId}
             </if>
             <if test="map.username != null and map.username != ''">
                 and username like '%${map.username}%'

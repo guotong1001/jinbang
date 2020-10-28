@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fm.fm.dao.SysRoleDao">
 
+    <cache-ref namespace="org.fm.fm.dao.SysRoleDao"/>
+
     <sql id="Base_Column_List">
         id, role_code, role_name, role_info, enabled, create_time, is_delete, remark
     </sql>

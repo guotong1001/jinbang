@@ -103,7 +103,7 @@ public class SysRoleController extends BaseController {
         boolean delete = sysRolePermissionRelationService.remove(new QueryWrapper<SysRolePermissionRelationBO>()
                 .eq("role_id", sysRoleBO.getId()));
         List<SysRolePermissionRelationBO> list = new ArrayList<SysRolePermissionRelationBO>();
-        for (Integer permissionId : sysRoleBO.getPermissionIds()) {
+        for (Long permissionId : sysRoleBO.getPermissionIds()) {
             SysRolePermissionRelationBO rolePermissionRelationBO = new SysRolePermissionRelationBO();
             rolePermissionRelationBO.setRoleId(sysRoleBO.getId());
             rolePermissionRelationBO.setPermissionId(permissionId);

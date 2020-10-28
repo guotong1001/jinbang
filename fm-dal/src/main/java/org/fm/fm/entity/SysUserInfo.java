@@ -1,6 +1,6 @@
 package org.fm.fm.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,9 +19,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class SysUserInfo extends Model<SysUserInfo> {
     //主键
-    private Integer id;
-    //所属部门
-    private Integer deptId;
+    private Long id;
     //用户名
     private String username;
     //密码
@@ -33,6 +31,7 @@ public class SysUserInfo extends Model<SysUserInfo> {
     //状态 （0启用|1禁用）
     private String enabled;
     //创建时间
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     //逻辑删除 （0启用|1删除）
     @TableLogic
@@ -43,21 +42,14 @@ public class SysUserInfo extends Model<SysUserInfo> {
     public SysUserInfo() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
 
     public String getUsername() {
         return username;

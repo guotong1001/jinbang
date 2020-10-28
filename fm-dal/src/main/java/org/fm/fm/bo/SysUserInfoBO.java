@@ -27,6 +27,6 @@ public class SysUserInfoBO extends SysUserInfo {
     private Set<SysRoleBO> sysRoleBOS = new HashSet<>();
 
     @TableField(exist = false)
-    private List<Integer> roleIds = new ArrayList<Integer>();
+    private List<Long> roleIds = new ArrayList<Long>();
 
 }

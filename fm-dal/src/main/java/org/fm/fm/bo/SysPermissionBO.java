@@ -21,6 +21,7 @@ import java.util.Set;
 @TableName("sys_permission")
 public class SysPermissionBO extends SysPermission {
 
+    private static final long serialVersionUID = -7977946540557964306L;
     @TableField(exist = false)
     private Set<SysPermissionBO> sysPermissionBOS = new HashSet<>();
 

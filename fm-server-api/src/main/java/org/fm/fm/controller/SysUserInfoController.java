@@ -16,7 +16,7 @@ import org.fm.type.IsDeleteType;
 import org.fm.util.AssertUtils;
 import org.fm.util.SysUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +51,9 @@ public class SysUserInfoController extends BaseController {
 
     @Autowired
     private SysUserRoleRelationService sysUserRoleRelationService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * 获取用户信息
@@ -139,6 +142,7 @@ public class SysUserInfoController extends BaseController {
      */
     @PostMapping("/insert")
     public ResponseBean insert(@RequestBody SysUserInfoBO sysUserInfoBO) {
+        sysUserInfoBO.setPassword(passwordEncoder.encode(sysUserInfoBO.getPassword()));
         return success(this.sysUserInfoService.save(sysUserInfoBO));
     }
 
@@ -153,7 +157,7 @@ public class SysUserInfoController extends BaseController {
         boolean delete = sysUserRoleRelationService.remove(new QueryWrapper<SysUserRoleRelationBO>()
                 .eq("user_id", sysUserInfoBO.getId()));
         List<SysUserRoleRelationBO> list = new ArrayList<SysUserRoleRelationBO>();
-        for (Integer roleId : sysUserInfoBO.getRoleIds()) {
+        for (Long roleId : sysUserInfoBO.getRoleIds()) {
             SysUserRoleRelationBO userRoleRelationBO = new SysUserRoleRelationBO();
             userRoleRelationBO.setUserId(sysUserInfoBO.getId());
             userRoleRelationBO.setRoleId(roleId);

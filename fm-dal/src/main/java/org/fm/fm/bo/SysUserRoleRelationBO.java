@@ -16,4 +16,6 @@ import org.fm.fm.entity.SysUserRoleRelation;
 @TableName("sys_user_role_relation")
 public class SysUserRoleRelationBO extends SysUserRoleRelation {
 
+    private static final long serialVersionUID = -8072459703366128540L;
+
 }

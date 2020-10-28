@@ -1,6 +1,6 @@
 package org.fm.fm.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +19,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class SysRole extends Model<SysRole> {
     //主键
-    private Integer id;
+    private Long id;
     //角色编码
     private String roleCode;
     //角色名称
@@ -29,6 +29,7 @@ public class SysRole extends Model<SysRole> {
     //状态 （0启用|1删除）
     private String enabled;
     //创建时间
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     //逻辑删除 （0启用|1删除）
     @TableLogic
@@ -39,11 +40,11 @@ public class SysRole extends Model<SysRole> {
     public SysRole() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

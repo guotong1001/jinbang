@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -76,8 +77,8 @@ public class OAuth2Config {
                     .authorizeRequests()
                     //下边的路径放行,不需要经过认证
                     .antMatchers("/oauth/*", "/captcha", "/sysUserInfo/user/login").permitAll()
-//                    //OPTIONS请求不需要鉴权
-//                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                    //OPTIONS请求不需要鉴权
+                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 //                    //用户的增删改接口只允许管理员访问
 //                    .antMatchers(HttpMethod.POST, "/sysUserInfo/user").hasAnyAuthority(ROLE_ADMIN)
 //                    .antMatchers(HttpMethod.PUT, "/sysUserInfo/user").hasAnyAuthority(ROLE_ADMIN)

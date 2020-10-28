@@ -22,10 +22,11 @@ import java.util.Set;
 @TableName("sys_role")
 public class SysRoleBO extends SysRole {
 
+    private static final long serialVersionUID = 5228281388986911237L;
     @TableField(exist = false)
     private Set<SysPermissionBO> sysPermissionBOS = new HashSet<>();
 
     @TableField(exist = false)
-    private List<Integer> permissionIds = new ArrayList<Integer>();
+    private List<Long> permissionIds = new ArrayList<Long>();
 
 }

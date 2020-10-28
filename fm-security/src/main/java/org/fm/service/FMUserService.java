@@ -76,7 +76,7 @@ public class FMUserService {
             //因为oauth2本身自带的登录接口是"/oauth/token"，并且返回的数据类型不能按我们想要的去返回
             //用restTemplate(HTTP客户端)进行一次转发到oauth2内部的登录接口
             // serverConfig.getUrl() + UrlEnum.LOGIN_URL.getUrl()
-            System.out.println(serverConfig.getUrl() + serverPort + projectToken);
+//            System.out.println(serverConfig.getUrl() + serverPort + projectToken);
             token = restTemplate.postForObject(serverConfig.getUrl() + serverPort + projectToken, paramMap, Token.class);
             TokenVO tokenVO = redisUtil.get(token.getValue(), TokenVO.class);
             if(tokenVO != null){

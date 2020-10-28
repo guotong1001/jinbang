@@ -1,6 +1,6 @@
 package org.fm.fm.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +19,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class SysPermission extends Model<SysPermission> {
     //主键
-    private Integer id;
+    private Long id;
     //权限编码
     private String permissionCode;
     //权限类型 （0系统|1项目|2菜单|3功能）
@@ -27,6 +27,7 @@ public class SysPermission extends Model<SysPermission> {
     //权限描述
     private String permissionInfo;
     //创建时间
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     //逻辑删除 （0启用|1删除）
     @TableLogic
@@ -44,11 +45,11 @@ public class SysPermission extends Model<SysPermission> {
         this.createTime = createTime;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
