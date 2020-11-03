@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.fm.fm.entity.SysRole;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_role")
-public class SysRoleBO extends SysRole {
+public class SysRoleBO extends SysRole implements Serializable {
 
     private static final long serialVersionUID = 5228281388986911237L;
     @TableField(exist = false)

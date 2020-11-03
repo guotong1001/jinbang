@@ -8,6 +8,7 @@ import org.fm.fm.bo.SysPermissionBO;
 import org.fm.fm.dao.SysPermissionDao;
 import org.fm.fm.service.SysPermissionService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.Map;
  * @since 2020-09-18 11:00:12
  */
 @Service("sysPermissionService")
+@Transactional
 public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionDao, SysPermissionBO> implements SysPermissionService {
 
     /**

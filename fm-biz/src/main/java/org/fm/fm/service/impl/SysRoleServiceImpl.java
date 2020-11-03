@@ -10,6 +10,7 @@ import org.fm.fm.dao.SysRoleDao;
 import org.fm.fm.dao.SysRolePermissionRelationDao;
 import org.fm.fm.service.SysRoleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Map;
  * @since 2020-09-18 11:02:18
  */
 @Service("sysRoleService")
+@Transactional
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleDao, SysRoleBO> implements SysRoleService {
 
     /**

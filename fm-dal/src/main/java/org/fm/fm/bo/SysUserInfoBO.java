@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.fm.fm.entity.SysUserInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_user_info")
-public class SysUserInfoBO extends SysUserInfo {
+public class SysUserInfoBO extends SysUserInfo implements Serializable {
 
     private static final long serialVersionUID = -276962274548453684L;
     @TableField(exist = false)

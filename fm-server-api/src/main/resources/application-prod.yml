@@ -27,7 +27,7 @@ spring:
 #================= Spring Security end =================
 logging:
   level:
-    com.autozi.app: DEBUG
+    org.fm: DEBUG
     org.hibernate: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE

@@ -8,6 +8,7 @@ import org.fm.fm.bo.*;
 import org.fm.fm.dao.*;
 import org.fm.fm.service.SysUserInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import java.util.Set;
  * @since 2020-09-16 11:16:02
  */
 @Service("sysUserInfoService")
+@Transactional
 public class SysUserInfoServiceImpl extends ServiceImpl<SysUserInfoDao, SysUserInfoBO> implements SysUserInfoService {
 
     @Resource

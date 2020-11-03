@@ -10,26 +10,60 @@ project:
   token: /oauth/token
   ver-code: /sysUserInfo
 spring:
+  output:
+    ansi:
+      enabled: ALWAYS
   datasource:
-    url: jdbc:mysql://129.211.14.58:3306/fm?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=utf8
-    username: root
-    password: Jinbang666...
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      max-lifetime: 28800
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    ##### druid配置
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://129.211.14.58:3306/fm?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf8
+      username: root
+      password: Jinbang666...
+      filters: stat,wall
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=2000
+      #连接池配置(通常来说，只需要修改initialSize、minIdle、maxActive)
+      max-active: 100
+      initial-size: 1
+      min-idle: 1
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      #打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: select 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      validation-query-timeout: 5000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      max-open-prepared-statements: 50
   redis:
     database: 0
+#    host: 127.0.0.1
     host: 129.211.14.58
     port: 6379
-    cache-prefix: fm
+    password: 123456
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 5000
+        max-idle: 50
+        min-idle: 0
+    timeout: 5000
     session:
       timeout: 2592000 ## 30*24*60*60
-    password: 123456
 #================= Spring Security start ===============
 #================= Spring Security end =================
 logging:
   level:
-    com.autozi.app: DEBUG
+    org.fm: DEBUG
     org.hibernate: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE

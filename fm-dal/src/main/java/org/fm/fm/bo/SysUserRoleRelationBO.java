@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.fm.fm.entity.SysUserRoleRelation;
 
+import java.io.Serializable;
+
 /**
  * 系统用户-角色关系表 (SysUserRoleRelation)表数据库访问层
  *
@@ -14,7 +16,7 @@ import org.fm.fm.entity.SysUserRoleRelation;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_user_role_relation")
-public class SysUserRoleRelationBO extends SysUserRoleRelation {
+public class SysUserRoleRelationBO extends SysUserRoleRelation implements Serializable {
 
     private static final long serialVersionUID = -8072459703366128540L;
 

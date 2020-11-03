@@ -71,12 +71,13 @@ public class OAuth2Config {
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
+            http.csrf().disable();
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                     .and()
                     //请求权限配置
                     .authorizeRequests()
                     //下边的路径放行,不需要经过认证
-                    .antMatchers("/oauth/*", "/captcha", "/sysUserInfo/user/login").permitAll()
+                    .antMatchers("/oauth/*","/druid/**", "/captcha", "/sysUserInfo/user/login").permitAll()
                     //OPTIONS请求不需要鉴权
                     .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 //                    //用户的增删改接口只允许管理员访问

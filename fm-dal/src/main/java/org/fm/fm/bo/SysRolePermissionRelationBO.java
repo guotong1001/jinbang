@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.fm.fm.entity.SysRolePermissionRelation;
 
+import java.io.Serializable;
+
 /**
  * 系统角色-权限关系表 (SysRolePermissionRelation)表数据库访问层
  *
@@ -14,7 +16,7 @@ import org.fm.fm.entity.SysRolePermissionRelation;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_role_permission_relation")
-public class SysRolePermissionRelationBO extends SysRolePermissionRelation {
+public class SysRolePermissionRelationBO extends SysRolePermissionRelation implements Serializable {
 
     private static final long serialVersionUID = 8480051417525159133L;
 

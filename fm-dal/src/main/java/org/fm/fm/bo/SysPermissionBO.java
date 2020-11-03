@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.fm.fm.entity.SysPermission;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +20,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_permission")
-public class SysPermissionBO extends SysPermission {
+public class SysPermissionBO extends SysPermission implements Serializable {
 
     private static final long serialVersionUID = -7977946540557964306L;
     @TableField(exist = false)

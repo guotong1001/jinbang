@@ -8,6 +8,7 @@ import org.fm.fm.bo.SysUserRoleRelationBO;
 import org.fm.fm.dao.SysUserRoleRelationDao;
 import org.fm.fm.service.SysUserRoleRelationService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.Map;
  * @since 2020-09-18 11:04:05
  */
 @Service("sysUserRoleRelationService")
+@Transactional
 public class SysUserRoleRelationServiceImpl extends ServiceImpl<SysUserRoleRelationDao, SysUserRoleRelationBO> implements SysUserRoleRelationService {
 
     /**

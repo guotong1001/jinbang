@@ -1,51 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-            </pattern>
-        </encoder>
-    </appender>
 
-    <appender name="FILE-OUT"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/application-server.log</file>
 
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
-        </encoder>
+    <contextName>${APP_NAME}</contextName>
+    <springProperty name="APP_NAME" scope="context" source="spring.application.name"/>
+    <springProperty name="LOG_FILE" scope="context" source="logging.file" defaultValue="../logs/${APP_NAME}"/>
+    <springProperty name="LOG_POINT_FILE" scope="context" source="logging.file" defaultValue="../logs/point"/>
+    <springProperty name="LOG_MAXFILESIZE" scope="context" source="logback.filesize" defaultValue="50MB"/>
+    <springProperty name="LOG_FILEMAXDAY" scope="context" source="logback.filemaxday" defaultValue="7"/>
+    <springProperty name="ServerIP" scope="context" source="spring.cloud.client.ip-address" defaultValue="0.0.0.0"/>
+    <springProperty name="ServerPort" scope="context" source="server.port" defaultValue="0000"/>
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>logs/application-server.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- keep 30 days' worth of history -->
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-    </appender>
 
-    <!--<logger name="com.relayrides.pushy" level="DEBUG" />-->
-    <logger name="com.night" level="DEBUG"/>
-    <!--<logger name="org.springframework.security" level="DEBUG"/>-->
-
-    <root level="info">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="FILE-OUT"/>
-    </root>
-    <!-- 彩色日志配置 -->
+    <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
     <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
     <!-- 彩色日志格式 -->
-    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){green} %clr(${LOG_LEVEL_PATTERN:-%5p}){red} %clr(${PID:-}){magenta} %clr(---){blue} %clr([%30.30t]){yellow} %clr(%-40.40logger{39}){cyan} %clr(:){blue} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
-    <!-- 日志控制台输出设置 -->
-    <!-- %m输出的信息，%p日志级别，%t线程名，%d日期，%c类的全名 -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <property name="CONSOLE_LOG_PATTERN"
+              value="[${APP_NAME}:${ServerIP}:${ServerPort}] %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%level){blue} %clr(${PID}){magenta} %clr([%thread]){orange} %clr(%logger){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}" />
+    <property name="CONSOLE_LOG_PATTERN_NO_COLOR" value="[${APP_NAME}:${ServerIP}:${ServerPort}] %d{yyyy-MM-dd HH:mm:ss.SSS} %level ${PID} [%thread] %logger %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}" />
+
+    <!-- 控制台日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
         <encoder>
-            <!-- <pattern>%d %p (%file:%line\)- %m%n</pattern> -->
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
+
+    <!-- 按照每天生成常规日志文件 -->
+    <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}/${APP_NAME}-error.log</file>
+        <!-- 基于时间的分包策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}/${APP_NAME}-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <!--保留时间,单位:天-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN_NO_COLOR}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE-ERROR"/>
+    </root>
 
 </configuration>

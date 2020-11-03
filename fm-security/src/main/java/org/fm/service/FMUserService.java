@@ -64,7 +64,7 @@ public class FMUserService {
      * @return
      */
     public ResponseBean login(SysUserInfoVO sysUserInfoVO){
-        log.info("登录---"+sysUserInfoVO.toString());
+//        log.info("登录---"+sysUserInfoVO.toString());
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
         paramMap.add("client_id", CLIENT_ID);
         paramMap.add("client_secret", CLIENT_SECRET);
