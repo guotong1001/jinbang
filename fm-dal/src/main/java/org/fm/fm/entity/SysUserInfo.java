@@ -30,8 +30,6 @@ public class SysUserInfo extends Model<SysUserInfo> {
     private String phone;
     //状态 （0启用|1禁用）
     private String enabled;
-    //是否vip （0不是|1是）
-    private Integer isVip;
     //创建时间
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
