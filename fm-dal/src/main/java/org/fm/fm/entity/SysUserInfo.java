@@ -28,11 +28,19 @@ public class SysUserInfo extends Model<SysUserInfo> {
     private String fullname;
     //联系方式
     private String phone;
-    //状态 （0启用|1禁用）
-    private String enabled;
+    //地址
+    private String address;
+    //会员 0是，1不是
+    private Integer isVip;
+    //会员开通时间
+    private Date vipOpenTime;
+    //会员到期时间
+    private Date vipExpireTime;
     //创建时间
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
+    //状态 （0启用|1禁用）
+    private String enabled;
     //逻辑删除 （0启用|1删除）
     @TableLogic
     private Integer isDelete;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.FmRecordingDao">
+
+    <cache-ref namespace="org.fm.fm.dao.FmRecordingDao"/>
+
+    <sql id="Base_Column_List">
+        id, user_id, source_id, recording, create_time, update_time, is_delete, remark        
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="sourceId != null">
+                and source_id = #{sourceId}
+            </if>
+            <if test="recording != null and recording != ''">
+                and recording like concat('%', #{recording}, '%')
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark like concat('%', #{remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.userId != null">
+                and user_id = #{map.userId}
+            </if>
+            <if test="map.sourceId != null">
+                and source_id = #{map.sourceId}
+            </if>
+            <if test="map.recording != null and map.recording != ''">
+                and recording like concat('%', #{map.recording}, '%')
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.updateTime != null">
+                and update_time = #{map.updateTime}
+            </if>
+            <if test="map.isDelete != null">
+                and is_delete = #{map.isDelete}
+            </if>
+            <if test="map.remark != null and map.remark != ''">
+                and remark like concat('%', #{map.remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.FmRecordingBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_recording
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.FmRecordingBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_recording
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>

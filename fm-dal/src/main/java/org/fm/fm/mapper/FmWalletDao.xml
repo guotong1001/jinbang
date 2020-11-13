@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.FmWalletDao">
+
+    <cache-ref namespace="org.fm.fm.dao.FmWalletDao"/>
+
+    <sql id="Base_Column_List">
+        id, user_id, balance, create_time, update_time, remake        
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="balance != null">
+                and balance = #{balance}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="remake != null and remake != ''">
+                and remake like concat('%', #{remake}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.userId != null">
+                and user_id = #{map.userId}
+            </if>
+            <if test="map.balance != null">
+                and balance = #{map.balance}
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.updateTime != null">
+                and update_time = #{map.updateTime}
+            </if>
+            <if test="map.remake != null and map.remake != ''">
+                and remake like concat('%', #{map.remake}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.FmWalletBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_wallet
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.FmWalletBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_wallet
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>

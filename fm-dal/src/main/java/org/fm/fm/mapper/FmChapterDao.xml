@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.FmChapterDao">
+
+    <cache-ref namespace="org.fm.fm.dao.FmChapterDao"/>
+
+    <sql id="Base_Column_List">
+        id, curriculum_id, chapter_name, chapter_introduce, chapter_path, type, vip_type, is_inland, create_time, update_time, is_delete, remark        
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="curriculumId != null">
+                and curriculum_id = #{curriculumId}
+            </if>
+            <if test="chapterName != null and chapterName != ''">
+                and chapter_name like concat('%', #{chapterName}, '%')
+            </if>
+            <if test="chapterIntroduce != null and chapterIntroduce != ''">
+                and chapter_introduce like concat('%', #{chapterIntroduce}, '%')
+            </if>
+            <if test="chapterPath != null and chapterPath != ''">
+                and chapter_path like concat('%', #{chapterPath}, '%')
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="vipType != null">
+                and vip_type = #{vipType}
+            </if>
+            <if test="isInland != null">
+                and is_inland = #{isInland}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark like concat('%', #{remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.curriculumId != null">
+                and curriculum_id = #{map.curriculumId}
+            </if>
+            <if test="map.chapterName != null and map.chapterName != ''">
+                and chapter_name like concat('%', #{map.chapterName}, '%')
+            </if>
+            <if test="map.chapterIntroduce != null and map.chapterIntroduce != ''">
+                and chapter_introduce like concat('%', #{map.chapterIntroduce}, '%')
+            </if>
+            <if test="map.chapterPath != null and map.chapterPath != ''">
+                and chapter_path like concat('%', #{map.chapterPath}, '%')
+            </if>
+            <if test="map.type != null">
+                and type = #{map.type}
+            </if>
+            <if test="map.vipType != null">
+                and vip_type = #{map.vipType}
+            </if>
+            <if test="map.isInland != null">
+                and is_inland = #{map.isInland}
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.updateTime != null">
+                and update_time = #{map.updateTime}
+            </if>
+            <if test="map.isDelete != null">
+                and is_delete = #{map.isDelete}
+            </if>
+            <if test="map.remark != null and map.remark != ''">
+                and remark like concat('%', #{map.remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.FmChapterBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_chapter
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.FmChapterBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_chapter
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>
