@@ -22,10 +22,10 @@ import java.util.Date;
  * @项目名称：fm
  * @类名称：permissionService
  * @类描述：TODO 自定义权限验证
- * @作者：张庭伟 @创建时间：2020/4/5 22:38
+ * @作者：邹国庆 @创建时间：2020/4/5 22:38
  * @备注：
  * @version：
- * @Copyright (C)：湖南继善高科技有限公司
+ * @Copyright (C)：
  */
 @Component("Permit")
 public class PermitService {

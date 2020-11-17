@@ -4,10 +4,10 @@ package org.fm.consts;
  * @项目名称：fm
  * @类名称：StateCodeConsts
  * @类描述：TODO
- * @作者：张庭伟 @创建时间：2020/4/2 16:02
+ * @作者：邹国庆 @创建时间：2020/4/2 16:02
  * @备注：
  * @version：
- * @Copyright (C)：湖南继善高科技有限公司
+ * @Copyright (C)：
  */
 public class StateCodeConsts {
 

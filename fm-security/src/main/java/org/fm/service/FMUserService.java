@@ -94,15 +94,15 @@ public class FMUserService {
             }
             return ResponseBean.error(code, e.getMessage().split(":")[4].trim().split(",")[0].replaceAll("\"",""));
         }
-        //拿到了登录成功后返回的token信息之后，我再进行一层封装，最后返回给前端的其实是LoginUserVO
+        //拿到了登录成功后返回的token信息之后，我再进行一层封装，最后返回给前端的其实是tokenVO
         TokenVO tokenVO = new TokenVO();
         SysUserInfoBO sysUserInfoBO = sysUserInfoService.findByUsername(sysUserInfoVO.getUsername());
         tokenVO.setAccessToken(token.getValue());
         tokenVO.setTokenType(token.getTokenType());
         tokenVO.setRefreshToken(token.getRefreshToken().getValue());
         tokenVO.setRefreshTokenExpiration(token.getRefreshToken().getExpiration());
-        //存储登录的用户
-        redisUtil.set(tokenVO.getAccessToken(), tokenVO, TimeUnit.HOURS.toSeconds(1));
+        //存储登录的用户 用户token存redis设置过期时间7天
+        redisUtil.set(tokenVO.getAccessToken(), tokenVO, TimeUnit.DAYS.toSeconds(7));
         return ResponseBean.success(tokenVO);
     }
 

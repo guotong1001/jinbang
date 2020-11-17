@@ -4,10 +4,10 @@ package org.fm.consts;
  * @项目名称：geosun
  * @类名称：HintConstant
  * @类描述：提示
- * @作者：张庭伟 @创建时间：2020/3/13 14:35
+ * @作者：邹国庆 @创建时间：2020/3/13 14:35
  * @备注：
  * @version：
- * @Copyright (C)：湖南继善高科技有限公司
+ * @Copyright (C)：
  */
 public class HintConsts {
 
