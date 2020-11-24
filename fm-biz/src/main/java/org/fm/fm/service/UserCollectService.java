@@ -12,7 +12,7 @@ import java.util.Map;
  * 用户收藏关系表(UserCollect)表服务接口
  *
  * @author Guoqing
- * @since 2020-11-13 15:09:23
+ * @since 2020-11-19 09:32:49
  */
 public interface UserCollectService extends IService<UserCollectBO> {
 

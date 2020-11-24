@@ -16,4 +16,6 @@ import org.fm.fm.entity.UserWrongTopic;
 @TableName("user_wrong_topic")
 public class UserWrongTopicBO extends UserWrongTopic {
 
+    private static final long serialVersionUID = 6996418107248786100L;
+
 }

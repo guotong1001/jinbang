@@ -18,7 +18,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class FmWallet extends Model<FmWallet> {
 
-    private static final long serialVersionUID = -58918004755209175L;
 
 
     private Long id;

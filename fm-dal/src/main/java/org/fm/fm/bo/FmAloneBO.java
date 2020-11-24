@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmAlone;
 @TableName("fm_alone")
 public class FmAloneBO extends FmAlone {
 
+    private static final long serialVersionUID = -392397869214908316L;
+
 }

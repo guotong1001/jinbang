@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmWallet;
 @TableName("fm_wallet")
 public class FmWalletBO extends FmWallet {
 
+    private static final long serialVersionUID = 5930808492974389065L;
+
 }

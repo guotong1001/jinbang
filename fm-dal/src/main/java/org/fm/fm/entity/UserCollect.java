@@ -11,14 +11,13 @@ import java.util.Date;
  * 用户收藏关系表(UserCollect)表实体类
  *
  * @author Guoqing
- * @since 2020-11-13 15:09:16
+ * @since 2020-11-19 09:33:02
  */
 @SuppressWarnings("serial")
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class UserCollect extends Model<UserCollect> {
 
-    private static final long serialVersionUID = 651201339000514333L;
 
     //主键    
     private Long id;
@@ -27,6 +26,8 @@ public class UserCollect extends Model<UserCollect> {
     private Long userId;
     //内容ID    
     private Long contentId;
+    //内容类别（1视频，2音频，3考题）    
+    private Integer contentType;
     //创建时间    
     private Date createTime;
     //逻辑删除 （0启用|1删除）    

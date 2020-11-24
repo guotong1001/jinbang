@@ -1,5 +1,5 @@
 server:
-  host: localhost
+  host: 127.0.0.1
   port: 8800
   tomcat:
     max-connections: 10000
@@ -18,7 +18,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     ##### druid配置
     druid:
-      driver-class-name: com.mysql.jdbc.Driver
+#      driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://129.211.14.58:3306/fm?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf8
       username: root
       password: Jinbang666...
@@ -50,7 +50,7 @@ spring:
 #    host: 127.0.0.1
     host: 129.211.14.58
     port: 6379
-    password: 123456
+    password: jinbang
     jedis:
       pool:
         max-active: 50

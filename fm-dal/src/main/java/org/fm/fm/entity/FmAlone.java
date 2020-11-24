@@ -18,7 +18,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class FmAlone extends Model<FmAlone> {
 
-    private static final long serialVersionUID = 307961157266224166L;
 
     //主键    
     private Long id;

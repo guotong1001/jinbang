@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmTopic;
 @TableName("fm_topic")
 public class FmTopicBO extends FmTopic {
 
+    private static final long serialVersionUID = -3604752027660725216L;
+
 }

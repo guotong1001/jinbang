@@ -15,7 +15,7 @@ import java.util.Map;
  * 用户收藏关系表(UserCollect)表数据库访问层
  *
  * @author Guoqing
- * @since 2020-11-13 15:09:16
+ * @since 2020-11-19 09:32:59
  */
 @Mapper
 @CacheNamespace(implementation = RedisCache.class, eviction = RedisCache.class)

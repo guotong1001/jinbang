@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmCurriculum;
 @TableName("fm_curriculum")
 public class FmCurriculumBO extends FmCurriculum {
 
+    private static final long serialVersionUID = -880277799127911089L;
+
 }

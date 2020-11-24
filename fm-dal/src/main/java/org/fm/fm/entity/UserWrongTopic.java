@@ -18,7 +18,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class UserWrongTopic extends Model<UserWrongTopic> {
 
-    private static final long serialVersionUID = -84883837546753061L;
+
 
     //主键    
     private Long id;

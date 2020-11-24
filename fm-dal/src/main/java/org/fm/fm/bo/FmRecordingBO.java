@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmRecording;
 @TableName("fm_recording")
 public class FmRecordingBO extends FmRecording {
 
+    private static final long serialVersionUID = 1778407175913666126L;
+
 }

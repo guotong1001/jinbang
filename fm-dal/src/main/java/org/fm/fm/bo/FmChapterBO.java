@@ -16,4 +16,6 @@ import org.fm.fm.entity.FmChapter;
 @TableName("fm_chapter")
 public class FmChapterBO extends FmChapter {
 
+    private static final long serialVersionUID = -3832751360312099906L;
+
 }

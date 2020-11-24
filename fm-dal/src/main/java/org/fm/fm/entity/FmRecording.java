@@ -18,8 +18,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class FmRecording extends Model<FmRecording> {
 
-    private static final long serialVersionUID = 524361469196026378L;
-
     //主键    
     private Long id;
 

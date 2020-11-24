@@ -18,7 +18,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class FmCurriculum extends Model<FmCurriculum> {
 
-    private static final long serialVersionUID = 519366796547794684L;
 
     //主键    
     private Long id;

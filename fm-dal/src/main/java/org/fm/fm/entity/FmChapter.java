@@ -18,7 +18,6 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class FmChapter extends Model<FmChapter> {
 
-    private static final long serialVersionUID = 316392999812553751L;
 
     //主键    
     private Long id;

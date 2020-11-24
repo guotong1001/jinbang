@@ -1,6 +1,6 @@
 package org.fm;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.fm.bean.FMUserInfo;
 import org.fm.consts.SysConsts;
 import org.fm.fm.bo.SysPermissionBO;
