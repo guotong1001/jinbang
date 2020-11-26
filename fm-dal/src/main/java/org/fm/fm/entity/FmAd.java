@@ -8,32 +8,24 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 单独视频音频表（与主分类内容不互通）(FmAlone)表实体类
+ * 广告表(FmAd)表实体类
  *
  * @author Guoqing
- * @since 2020-11-26 11:38:19
+ * @since 2020-11-26 11:36:54
  */
 @SuppressWarnings("serial")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class FmAlone extends Model<FmAlone> {
+public class FmAd extends Model<FmAd> {
 
 
     //主键    
     private Long id;
 
-    //内容名    
-    private String chapterName;
-    //内容介绍    
-    private String chapterIntroduce;
-    //内容地址    
-    private String chapterPath;
-    //类型 （0视频1音频）    
-    private Integer type;
-    //收费类型 （0免费1vip2单独收费）    
-    private Integer vipType;
-    //浏览量    
-    private Long amount;
+    //广告名    
+    private String adName;
+    //广告地址    
+    private String adPath;
     //创建时间    
     private Date createTime;
     //更新时间    
@@ -43,7 +35,7 @@ public class FmAlone extends Model<FmAlone> {
     //备注    
     private String remark;
 
-    public FmAlone() {
+    public FmAd() {
     }
 
 

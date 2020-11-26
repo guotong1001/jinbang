@@ -11,7 +11,7 @@ import java.util.Date;
  * 课程章节表(FmChapter)表实体类
  *
  * @author Guoqing
- * @since 2020-11-13 14:49:21
+ * @since 2020-11-26 11:38:32
  */
 @SuppressWarnings("serial")
 @Data
@@ -36,6 +36,8 @@ public class FmChapter extends Model<FmChapter> {
     private Integer vipType;
     //地区类型 （0外国，1国内，2其他）    
     private Integer isInland;
+    //浏览量    
+    private Long amount;
     //创建时间    
     private Date createTime;
     //更新时间    

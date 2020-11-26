@@ -5,7 +5,7 @@
     <cache-ref namespace="org.fm.fm.dao.FmChapterDao"/>
 
     <sql id="Base_Column_List">
-        id, curriculum_id, chapter_name, chapter_introduce, chapter_path, type, vip_type, is_inland, create_time, update_time, is_delete, remark        
+        id, curriculum_id, chapter_name, chapter_introduce, chapter_path, type, vip_type, is_inland, amount, create_time, update_time, is_delete, remark        
     </sql>
 
     <sql id="where">
@@ -33,6 +33,9 @@
             </if>
             <if test="isInland != null">
                 and is_inland = #{isInland}
+            </if>
+            <if test="amount != null">
+                and amount = #{amount}
             </if>
             <if test="createTime != null">
                 and create_time = #{createTime}
@@ -74,6 +77,9 @@
             </if>
             <if test="map.isInland != null">
                 and is_inland = #{map.isInland}
+            </if>
+            <if test="map.amount != null">
+                and amount = #{map.amount}
             </if>
             <if test="map.createTime != null">
                 and create_time = #{map.createTime}

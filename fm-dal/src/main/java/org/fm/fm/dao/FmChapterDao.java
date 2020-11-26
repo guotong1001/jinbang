@@ -15,7 +15,7 @@ import java.util.Map;
  * 课程章节表(FmChapter)表数据库访问层
  *
  * @author Guoqing
- * @since 2020-11-13 14:49:20
+ * @since 2020-11-26 11:38:30
  */
 @Mapper
 @CacheNamespace(implementation = RedisCache.class, eviction = RedisCache.class)

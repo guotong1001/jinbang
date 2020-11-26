@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fm.fm.dao.FmAdDao">
+
+    <cache-ref namespace="org.fm.fm.dao.FmAdDao"/>
+
+    <sql id="Base_Column_List">
+        id, ad_name, ad_path, create_time, update_time, is_delete, remark        
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="adName != null and adName != ''">
+                and ad_name like concat('%', #{adName}, '%')
+            </if>
+            <if test="adPath != null and adPath != ''">
+                and ad_path like concat('%', #{adPath}, '%')
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark like concat('%', #{remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <sql id="whereForMap">
+        <where>
+            <if test="map.id != null">
+                and id = #{map.id}
+            </if>
+            <if test="map.adName != null and map.adName != ''">
+                and ad_name like concat('%', #{map.adName}, '%')
+            </if>
+            <if test="map.adPath != null and map.adPath != ''">
+                and ad_path like concat('%', #{map.adPath}, '%')
+            </if>
+            <if test="map.createTime != null">
+                and create_time = #{map.createTime}
+            </if>
+            <if test="map.updateTime != null">
+                and update_time = #{map.updateTime}
+            </if>
+            <if test="map.isDelete != null">
+                and is_delete = #{map.isDelete}
+            </if>
+            <if test="map.remark != null and map.remark != ''">
+                and remark like concat('%', #{map.remark}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <!--通过Map作为筛选条件分页查询-->
+    <select id="findPageForMap" resultType="org.fm.fm.bo.FmAdBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_ad
+        <include refid="whereForMap"/>
+    </select>
+
+    <!--通过Map作为筛选条件查询所有-->
+    <select id="findListForMap" resultType="org.fm.fm.bo.FmAdBO">
+        select
+        <include refid="Base_Column_List"/>
+        from fm_ad
+        <include refid="whereForMap"/>
+    </select>
+
+</mapper>

@@ -5,24 +5,24 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.fm.fm.bo.FmAloneBO;
+import org.fm.fm.bo.FmAdBO;
 import org.fm.util.RedisCache;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * 单独视频音频表（与主分类内容不互通）(FmAlone)表数据库访问层
+ * 广告表(FmAd)表数据库访问层
  *
  * @author Guoqing
- * @since 2020-11-26 11:38:17
+ * @since 2020-11-26 11:36:52
  */
 @Mapper
 @CacheNamespace(implementation = RedisCache.class, eviction = RedisCache.class)
-public interface FmAloneDao extends BaseMapper<FmAloneBO> {
+public interface FmAdDao extends BaseMapper<FmAdBO> {
 
-    IPage<FmAloneBO> findPageForMap(IPage<FmAloneBO> page, @Param("map") Map<String, Object> filter);
+    IPage<FmAdBO> findPageForMap(IPage<FmAdBO> page, @Param("map") Map<String, Object> filter);
 
-    List<FmAloneBO> findListForMap(@Param("map") Map<String, Object> filter);
+    List<FmAdBO> findListForMap(@Param("map") Map<String, Object> filter);
 
 }
